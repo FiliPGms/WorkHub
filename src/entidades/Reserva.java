@@ -11,4 +11,8 @@ public class Reserva {
 	private String horaFim;
 	private double valorTotal;
 	
+	//public double calculaValorTotal() {
+		
+	//}
+	
 }

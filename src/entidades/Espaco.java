@@ -29,6 +29,8 @@ public abstract class Espaco {
 	public double getValorHora() {
 		return this.valorHora;
 	}
-
+	
+	
+	
 	
 }

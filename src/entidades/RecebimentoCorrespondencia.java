@@ -1,5 +1,19 @@
 package entidades;
 
-public class RecebimentoCorrespondencia {
+public class RecebimentoCorrespondencia implements ServicoAdicional {
 
+	
+	private String descricao;
+	public RecebimentoCorrespondencia(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	public double getValorTotal() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public String getDescricao() {
+		return "...";
+	}
 }
