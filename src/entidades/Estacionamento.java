@@ -11,7 +11,6 @@ public class Estacionamento implements ServicoAdicional {
 	}
 	
 	public double getValorTotal() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	

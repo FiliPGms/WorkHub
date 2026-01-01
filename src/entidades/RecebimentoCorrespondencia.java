@@ -9,7 +9,6 @@ public class RecebimentoCorrespondencia implements ServicoAdicional {
 	}
 	
 	public double getValorTotal() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	
