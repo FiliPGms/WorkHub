@@ -30,7 +30,14 @@ public abstract class Espaco {
 		return this.valorHora;
 	}
 	
-	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+
+	    Espaco espaco = (Espaco) o;
+	    return this.id == espaco.id;
+	}
 	
 	
 }

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Duration;
 import java.util.Iterator;
+import excecoes.EspacoIndisponivelException;
 public class Reserva {
 	
 	private ArrayList<ServicoAdicional> servicos;
@@ -60,8 +61,18 @@ public class Reserva {
 	}
 
 	//public void cancelar();
-	//public boolean conflitaCom(Reserva outraReserva);
-	//public String getResumo();
+	public void conflitaCom(Reserva outraReserva) throws EspacoIndisponivelException {
+		boolean dataConflitante = this.dataReserva.equals(outraReserva.dataReserva);
+		boolean espacoConflitante = this.es.equals(outraReserva.es);
+		boolean horarioConflitante = this.horaInicio.isBefore(outraReserva.horaFim) && this.horaFim.isAfter(outraReserva.horaInicio);
+		if(dataConflitante && espacoConflitante && horarioConflitante) {
+			throw new EspacoIndisponivelException("Espaço já reservado para o horario especifico");
+		}
+	}
+	public String getResumo() {
+		return "Data da reserva: " + dataReserva + "/nValor: " + valorTotal + "/nID: " + idReserva +
+				"/nEspaco: " + es.getNome() + "/nNome do cliente: " + c.getNome();
+	}
 	
 	
 }

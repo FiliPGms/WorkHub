@@ -1,8 +1,6 @@
 package entidades;
 
 public class RecebimentoCorrespondencia implements ServicoAdicional {
-
-	
 	private String descricao;
 	public RecebimentoCorrespondencia(String descricao) {
 		this.descricao = descricao;
