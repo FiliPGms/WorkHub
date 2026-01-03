@@ -1,12 +1,17 @@
 package entidades;
 import java.util.ArrayList;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Duration;
 import java.util.Iterator;
 import excecoes.EspacoIndisponivelException;
-public class Reserva {
+public class Reserva implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<ServicoAdicional> servicos;
 	private int idReserva;
 	private Cliente c;
@@ -28,7 +33,9 @@ public class Reserva {
 		this.valorTotal = valorTotal;
 	}
 	
-	
+	public int getId() {
+		return this.idReserva;
+	}
 	public void adicionarServico(ServicoAdicional s) {
 		servicos.add(s);
 	}
@@ -60,7 +67,6 @@ public class Reserva {
 		return total;
 	}
 
-	//public void cancelar();
 	public void conflitaCom(Reserva outraReserva) throws EspacoIndisponivelException {
 		boolean dataConflitante = this.dataReserva.equals(outraReserva.dataReserva);
 		boolean espacoConflitante = this.es.equals(outraReserva.es);

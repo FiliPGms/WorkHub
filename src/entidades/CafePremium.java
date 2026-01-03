@@ -1,7 +1,13 @@
 package entidades;
 
-public class CafePremium implements ServicoAdicional{
+import java.io.Serializable;
+
+public class CafePremium implements ServicoAdicional,Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String descricao;
 	
 	public CafePremium(String descricao) {

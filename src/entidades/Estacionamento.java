@@ -1,7 +1,13 @@
 package entidades;
 
-public class Estacionamento implements ServicoAdicional {
+import java.io.Serializable;
+
+public class Estacionamento implements ServicoAdicional,Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double horasDuracao;
 	private String descricao;
 	

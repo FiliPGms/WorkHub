@@ -1,6 +1,11 @@
 package entidades;
+import java.io.Serializable;
 
-public abstract class Espaco {
+public abstract class Espaco implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nome;
 	private double valorHora;

@@ -1,6 +1,12 @@
 package entidades;
 
-public class RecebimentoCorrespondencia implements ServicoAdicional {
+import java.io.Serializable;
+
+public class RecebimentoCorrespondencia implements ServicoAdicional,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String descricao;
 	public RecebimentoCorrespondencia(String descricao) {
 		this.descricao = descricao;

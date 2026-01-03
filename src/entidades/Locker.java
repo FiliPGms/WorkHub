@@ -1,7 +1,13 @@
 package entidades;
 
-public class Locker implements ServicoAdicional {
+import java.io.Serializable;
+
+public class Locker implements ServicoAdicional,Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int quantidade;
 	private String descricao;
 	

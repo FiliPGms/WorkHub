@@ -1,7 +1,12 @@
 package entidades;
 import java.time.*;
+import java.io.Serializable;
 
-public class Cliente {
+public class Cliente implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cpf;
 	private String email;
 	private String nome;
