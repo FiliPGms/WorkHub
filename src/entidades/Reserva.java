@@ -86,7 +86,7 @@ public class Reserva implements Serializable {
 		boolean espacoConflitante = this.es.equals(outraReserva.es);
 		boolean horarioConflitante = this.horaInicio.isBefore(outraReserva.horaFim) && this.horaFim.isAfter(outraReserva.horaInicio);
 		if(dataConflitante && espacoConflitante && horarioConflitante) {
-			throw new EspacoIndisponivelException("Espaço já reservado para o horario especifico");
+			throw new EspacoIndisponivelException();
 		}
 	}
 	public String getResumo() {

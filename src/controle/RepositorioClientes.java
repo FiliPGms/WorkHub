@@ -45,14 +45,14 @@ public class RepositorioClientes {
 	public Cliente buscar(String cpf) throws ClienteNaoEncontradoException {
 		Cliente c = clientes.get(cpf);
 		if(c == null) {
-			throw new ClienteNaoEncontradoException("Cliente não encontrado");
+			throw new ClienteNaoEncontradoException();
 		}
 		return c;
 	}
 	
 	public void inserir(Cliente c) throws ClienteJaCadastradoException, FalhaPersistenciaException {
 		if(clientes.containsKey(c.getCpf())) {
-			throw new ClienteJaCadastradoException("Cliente já foi cadastrado");
+			throw new ClienteJaCadastradoException();
 		}
 		
 		clientes.put(c.getCpf(), c);
@@ -61,7 +61,7 @@ public class RepositorioClientes {
 	
 	public void remover(String cpf) throws ClienteNaoEncontradoException, FalhaPersistenciaException{
 		 if (!clientes.containsKey(cpf)) {
-		        throw new ClienteNaoEncontradoException("Cliente não encontrado");
+		        throw new ClienteNaoEncontradoException();
 		    }
 		 clientes.remove(cpf);
 		 salvarArquivo();

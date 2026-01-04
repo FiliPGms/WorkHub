@@ -72,7 +72,7 @@ public class AdministradorSistema {
 
 	        Reserva r = repoReservas.buscar(idReserva);
 	        if (r == null) {
-	            throw new ReservaNaoEncontradaException("Reserva não encontrada.");
+	            throw new ReservaNaoEncontradaException();
 	        }
 	        return r;
 	    }
@@ -93,7 +93,7 @@ public class AdministradorSistema {
 	        Reserva r = buscarReserva(idReserva);
 
 	        if (s == null) {
-	            throw new ServicoInvalidoException("Serviço invalido.");
+	            throw new ServicoInvalidoException();
 	        }
 
 	        r.adicionarServico(s);

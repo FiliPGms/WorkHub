@@ -2,7 +2,7 @@ package excecoes;
 
 public class EspacoIndisponivelException extends Exception {
 	
-	public EspacoIndisponivelException(String descricao) {
-		super(descricao);
+	public EspacoIndisponivelException() {
+		System.err.println("Espaco Indisponivel");
 	}
 }

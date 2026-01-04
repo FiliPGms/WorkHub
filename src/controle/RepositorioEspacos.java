@@ -51,7 +51,7 @@ public class RepositorioEspacos {
 	public Espaco buscar(int id) throws EspacoIndisponivelException {
 		Espaco e = espacos.get(id);
 		if(e==null) {
-			throw new EspacoIndisponivelException("Espaco nao encontrado");
+			throw new EspacoIndisponivelException();
 		}
 		return e;
 	}
@@ -63,7 +63,7 @@ public class RepositorioEspacos {
 	
 	public void remover(int id) throws FalhaPersistenciaException, EspacoIndisponivelException{
 		if (!espacos.containsKey(id)) {
-	        throw new EspacoIndisponivelException("Espaco nao encontrado");
+	        throw new EspacoIndisponivelException();
 	    }
 	 espacos.remove(id);
 	 salvarArquivo();

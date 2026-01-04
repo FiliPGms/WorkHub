@@ -50,7 +50,7 @@ public class RepositorioReservas {
 	public Reserva buscar(int idReserva) throws ReservaNaoEncontradaException{
 		Reserva r = reservas.get(idReserva);
 		if(r == null) {
-			throw new ReservaNaoEncontradaException("Reserva não encontrada");
+			throw new ReservaNaoEncontradaException();
 		}
 		return r;
 	}
@@ -62,7 +62,7 @@ public class RepositorioReservas {
 	
 	public void remover(int id) throws FalhaPersistenciaException, ReservaNaoEncontradaException{
 		 if (!reservas.containsKey(id)) {
-		        throw new ReservaNaoEncontradaException("Reserva não encontrada");
+		        throw new ReservaNaoEncontradaException();
 		    }
 
 		    reservas.remove(id);
