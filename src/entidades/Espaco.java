@@ -38,10 +38,14 @@ public abstract class Espaco implements Serializable {
 	@Override
 	public boolean equals(Object o) {
 	    if (this == o) return true;
-	    if (o == null || getClass() != o.getClass()) return false;
+	    if (!(o instanceof Espaco)) return false;
+	    Espaco e = (Espaco) o;
+	    return id == e.id;
+	}
 
-	    Espaco espaco = (Espaco) o;
-	    return this.id == espaco.id;
+	@Override
+	public int hashCode() {
+	    return Integer.hashCode(id);
 	}
 	
 	

@@ -21,6 +21,6 @@ public class Locker implements ServicoAdicional,Serializable {
 	}
 	
 	public String getDescricao() {
-		return "...";
+		return this.descricao;
 	}
 }

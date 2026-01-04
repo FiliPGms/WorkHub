@@ -1,5 +1,6 @@
 package controle;
-
+import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.io.*;
@@ -9,11 +10,15 @@ import excecoes.ReservaNaoEncontradaException;
 
 public class RepositorioReservas {
 	
-	private Map<Integer, Reserva> reservas; //id
+	private Map<Integer, Reserva> reservas = new HashMap<>(); //id
 	private final String F = "reservas.dat";
 	
 	public RepositorioReservas() throws FalhaPersistenciaException {
 		carregar(); 
+	}
+	
+	public List<Reserva> listar(){
+		return new ArrayList<>(reservas.values());
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -42,7 +47,7 @@ public class RepositorioReservas {
 		}
 	}
 	
-	public Reserva buscarReserva(int idReserva) throws ReservaNaoEncontradaException{
+	public Reserva buscar(int idReserva) throws ReservaNaoEncontradaException{
 		Reserva r = reservas.get(idReserva);
 		if(r == null) {
 			throw new ReservaNaoEncontradaException("Reserva não encontrada");
@@ -55,13 +60,13 @@ public class RepositorioReservas {
 		salvarArquivo();
 	}
 	
-	public void remover(int idReserva) throws FalhaPersistenciaException, ReservaNaoEncontradaException{
-		Reserva r = reservas.get(idReserva);
-		if(r == null) {
-			throw new ReservaNaoEncontradaException("Reserva não encontrada");
-		}
-		reservas.remove(idReserva);
-		salvarArquivo();
+	public void remover(int id) throws FalhaPersistenciaException, ReservaNaoEncontradaException{
+		 if (!reservas.containsKey(id)) {
+		        throw new ReservaNaoEncontradaException("Reserva não encontrada");
+		    }
+
+		    reservas.remove(id);
+		    salvarArquivo();
 	}
 	
 }

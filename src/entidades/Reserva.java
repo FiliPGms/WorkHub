@@ -1,10 +1,14 @@
 package entidades;
+
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.Temporal;
 import java.time.Duration;
 import java.util.Iterator;
+import java.util.List;
+
 import excecoes.EspacoIndisponivelException;
 public class Reserva implements Serializable {
 	
@@ -33,8 +37,18 @@ public class Reserva implements Serializable {
 		this.valorTotal = valorTotal;
 	}
 	
+	public List<ServicoAdicional> getServicosAdicionais() {
+	    return new ArrayList<>(servicos);
+	}
+	
 	public int getId() {
 		return this.idReserva;
+	}
+	public Cliente getCliente() {
+		return this.c;
+	}
+	public Espaco getEspaco() {
+		return this.es;
 	}
 	public void adicionarServico(ServicoAdicional s) {
 		servicos.add(s);
@@ -79,6 +93,16 @@ public class Reserva implements Serializable {
 		return "Data da reserva: " + dataReserva + "/nValor: " + valorTotal + "/nID: " + idReserva +
 				"/nEspaco: " + es.getNome() + "/nNome do cliente: " + c.getNome();
 	}
+
+	public LocalDate getDataReserva() {
+		return this.dataReserva;
+	}
+
+	public LocalTime getHoraInicio() {
+		return this.horaInicio;
+	}
 	
-	
+	public LocalTime getHoraFim() {
+		return this.horaFim;
+	}
 }

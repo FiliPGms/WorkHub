@@ -21,6 +21,6 @@ public class Estacionamento implements ServicoAdicional,Serializable {
 	}
 	
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 }

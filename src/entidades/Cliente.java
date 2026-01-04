@@ -34,4 +34,17 @@ public class Cliente implements Serializable{
 		this.email = e;
 		this.telefone = t;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (!(o instanceof Cliente)) return false;
+	    Cliente c = (Cliente) o;
+	    return cpf.equals(c.cpf);
+	}
+	
+	@Override
+	public int hashCode() {
+	    return cpf.hashCode();
+	}
 }

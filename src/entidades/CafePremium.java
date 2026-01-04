@@ -14,13 +14,12 @@ public class CafePremium implements ServicoAdicional,Serializable{
 		this.descricao = descricao;
 	}
 	
-
 	public double getValorTotal() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	
 	public String getDescricao() {
-		return "...";
+		return descricao;
 	}
 }

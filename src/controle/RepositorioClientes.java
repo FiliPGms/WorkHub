@@ -4,12 +4,13 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import entidades.Cliente;
-import entidades.Reserva;
+import excecoes.ClienteJaCadastradoException;
+import excecoes.ClienteNaoEncontradoException;
 import excecoes.FalhaPersistenciaException;
 
 public class RepositorioClientes {
 	
-	private Map<String, Cliente> clientes; //cpf
+	private Map<String, Cliente> clientes = new HashMap<>();//cpf
 	private final String F = "clientes.dat";
 	
 	public RepositorioClientes() throws FalhaPersistenciaException {
@@ -32,4 +33,38 @@ public class RepositorioClientes {
 			throw new FalhaPersistenciaException( "Erro ao carregar os clientes.");
 		}
 	}
+	
+	public void salvarArquivo() throws FalhaPersistenciaException{
+		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(F))){
+			oos.writeObject(clientes);
+		} catch(IOException e) {
+			throw new FalhaPersistenciaException("Erro ao salvar clientes.");
+		}
+	}
+	
+	public Cliente buscar(String cpf) throws ClienteNaoEncontradoException {
+		Cliente c = clientes.get(cpf);
+		if(c == null) {
+			throw new ClienteNaoEncontradoException("Cliente não encontrado");
+		}
+		return c;
+	}
+	
+	public void inserir(Cliente c) throws ClienteJaCadastradoException, FalhaPersistenciaException {
+		if(clientes.containsKey(c.getCpf())) {
+			throw new ClienteJaCadastradoException("Cliente já foi cadastrado");
+		}
+		
+		clientes.put(c.getCpf(), c);
+		salvarArquivo();
+	}
+	
+	public void remover(String cpf) throws ClienteNaoEncontradoException, FalhaPersistenciaException{
+		 if (!clientes.containsKey(cpf)) {
+		        throw new ClienteNaoEncontradoException("Cliente não encontrado");
+		    }
+		 clientes.remove(cpf);
+		 salvarArquivo();
+	}
 }
+
