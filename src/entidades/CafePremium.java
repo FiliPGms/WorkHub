@@ -4,21 +4,20 @@ import java.io.Serializable;
 
 public class CafePremium implements ServicoAdicional,Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String descricao;
+	private double valor;
 	
-	public CafePremium(String descricao) {
+	public CafePremium(double valor,String descricao) {
 		this.descricao = descricao;
 	}
 	
+	@Override
 	public double getValorTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.valor;
 	}
 	
+	@Override
 	public String getDescricao() {
 		return descricao;
 	}
