@@ -9,9 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import entidades.Cliente;
 import entidades.Espaco;
-import excecoes.ClienteNaoEncontradoException;
 import excecoes.EspacoIndisponivelException;
 import excecoes.FalhaPersistenciaException;
 
@@ -50,7 +48,7 @@ public class RepositorioEspacos {
 	
 	public Espaco buscar(int id) throws EspacoIndisponivelException {
 		Espaco e = espacos.get(id);
-		if(e==null) {
+		if(e == null) {
 			throw new EspacoIndisponivelException();
 		}
 		return e;

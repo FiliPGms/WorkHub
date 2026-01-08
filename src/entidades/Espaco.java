@@ -1,7 +1,7 @@
 package entidades;
 import java.io.Serializable;
 
-public abstract class Espaco implements Serializable {
+public class Espaco implements Serializable {
 	/**
 	 * 
 	 */
