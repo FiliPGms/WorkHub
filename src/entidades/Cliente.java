@@ -30,6 +30,18 @@ public class Cliente implements Serializable{
 		return this.nome;
 	}
 	
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public String getTelefone() {
+		return this.telefone;
+	}
+	
+	public LocalDate getData() {
+		return this.dataDeCadastro;
+	}
+	
 	public void atualizarContato(String e, String t) {
 		this.email = e;
 		this.telefone = t;

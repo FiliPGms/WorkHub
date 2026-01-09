@@ -71,9 +71,7 @@ public class AdministradorSistema {
 	            throws ReservaNaoEncontradaException {
 
 	        Reserva r = repoReservas.buscar(idReserva);
-	        if (r == null) {
-	            throw new ReservaNaoEncontradaException();
-	        }
+	        if (r == null) throw new ReservaNaoEncontradaException();
 	        return r;
 	    }
 
@@ -92,9 +90,7 @@ public class AdministradorSistema {
 
 	        Reserva r = buscarReserva(idReserva);
 
-	        if (s == null) {
-	            throw new ServicoInvalidoException();
-	        }
+	        if (s == null) throw new ServicoInvalidoException();
 
 	        r.adicionarServico(s);
 	        repoReservas.salvarArquivo();

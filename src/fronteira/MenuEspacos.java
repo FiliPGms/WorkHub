@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import controle.AdministradorSistema;
 import entidades.Espaco;
+import excecoes.ClienteNaoEncontradoException;
 import excecoes.EspacoIndisponivelException;
 import excecoes.FalhaPersistenciaException;
 
@@ -55,7 +56,18 @@ public class MenuEspacos {
         	
         	case 3: 
         		MenuPrincipal principal = new MenuPrincipal();
-        		principal.iniciaOperacao();
+        		try {
+					principal.iniciaOperacao();
+				} catch (FalhaPersistenciaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClienteNaoEncontradoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (EspacoIndisponivelException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         		break;
         		
         	default:

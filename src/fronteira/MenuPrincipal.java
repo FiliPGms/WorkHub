@@ -2,11 +2,13 @@ package fronteira;
 
 import java.util.Scanner;
 
+import excecoes.ClienteNaoEncontradoException;
+import excecoes.EspacoIndisponivelException;
 import excecoes.FalhaPersistenciaException;
 
 public class MenuPrincipal {
 	
-	public void iniciaOperacao() throws FalhaPersistenciaException {
+	public void iniciaOperacao() throws FalhaPersistenciaException, ClienteNaoEncontradoException, EspacoIndisponivelException {
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -61,7 +63,7 @@ public class MenuPrincipal {
        
 	}
 	
-	public static void main(String[] args) throws FalhaPersistenciaException {
+	public static void main(String[] args) throws FalhaPersistenciaException, ClienteNaoEncontradoException, EspacoIndisponivelException {
 		MenuPrincipal menu = new MenuPrincipal();
 		menu.iniciaOperacao();
 	}
