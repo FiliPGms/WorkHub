@@ -8,15 +8,14 @@ public class RecebimentoCorrespondencia implements ServicoAdicional,Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	private String descricao;
-	private double valor;
-	public RecebimentoCorrespondencia(double valor,String descricao) {
+	private static final double VALOR = 7.0;
+	public RecebimentoCorrespondencia(String descricao) {
 		this.descricao = descricao;
-		this.valor = valor;
 	}
 	
 	@Override
 	public double getValorTotal() {
-		return this.valor;
+		return this.VALOR;
 	}
 	
 	@Override

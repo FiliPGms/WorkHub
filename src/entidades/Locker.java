@@ -8,17 +8,16 @@ public class Locker implements ServicoAdicional,Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private double valor;
+	private static final double VALOR = 10.0;
 	private String descricao;
 	
-	public Locker(double valor, String descricao) {
-		this.valor = valor;
+	public Locker(String descricao) {
 		this.descricao = descricao;
 	}
 	
 	@Override
 	public double getValorTotal() {
-		return this.valor;
+		return this.VALOR;
 	}
 	
 	@Override

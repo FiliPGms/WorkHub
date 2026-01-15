@@ -6,15 +6,15 @@ public class CafePremium implements ServicoAdicional,Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String descricao;
-	private double valor;
+	private static final double VALOR = 5.0;
 	
-	public CafePremium(double valor,String descricao) {
+	public CafePremium(String descricao) {
 		this.descricao = descricao;
 	}
 	
 	@Override
 	public double getValorTotal() {
-		return this.valor;
+		return this.VALOR;
 	}
 	
 	@Override
