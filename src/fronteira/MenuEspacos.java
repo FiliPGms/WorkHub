@@ -125,13 +125,10 @@ public class MenuEspacos {
         		try {
 					principal.iniciaOperacao();
 				} catch (FalhaPersistenciaException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (ClienteNaoEncontradoException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (EspacoIndisponivelException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
         		break;
