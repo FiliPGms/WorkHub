@@ -63,8 +63,4 @@ public class MenuPrincipal {
        
 	}
 	
-	public static void main(String[] args) throws FalhaPersistenciaException, ClienteNaoEncontradoException, EspacoIndisponivelException {
-		MenuPrincipal menu = new MenuPrincipal();
-		menu.iniciaOperacao();
-	}
 }
