@@ -1,11 +1,21 @@
 package entidades;
 
 public class Auditorio extends Espaco{
-	private int capacidade;
+	private static final int CAPACIDADE = 50;
+	private static final double VALOR_HORA = 25.0;
+
 	
-	public Auditorio(int capacidade,int id, String nome, double valorHora, boolean disponivel) {
-		super(id, nome, valorHora, disponivel);
-		this.capacidade = capacidade;
+	public Auditorio(int id, String nome,boolean disponivel) {
+		super(id, nome,disponivel);
+	}
+	
+	@Override
+	public double getValorHora() {
+		return this.VALOR_HORA;
+	}
+	
+	public double getCapacidade() {
+		return this.CAPACIDADE;
 	}
 	
 }

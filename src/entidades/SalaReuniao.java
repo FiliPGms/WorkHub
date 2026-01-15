@@ -2,11 +2,21 @@ package entidades;
 
 public class SalaReuniao extends Espaco {
 	
-	private int capacidade;
+	private static final int CAPACIDADE = 30;
+	private static final double VALOR_HORA = 35.0;
+
 	
-	public SalaReuniao(int capacidade,int id, String nome, double valorHora, boolean disponivel) {
-		super(id, nome, valorHora, disponivel);
-		this.capacidade = capacidade;
+	public SalaReuniao(int id, String nome, boolean disponivel) {
+		super(id, nome,disponivel);
+	}
+	
+	@Override
+	public double getValorHora() {
+		return this.VALOR_HORA;
+	}
+	
+	public double getCapacidade() {
+		return this.CAPACIDADE;
 	}
 	
 }

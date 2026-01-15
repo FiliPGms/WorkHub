@@ -1,23 +1,23 @@
 package entidades;
 import java.io.Serializable;
 
-public class Espaco implements Serializable {
+public abstract class Espaco implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nome;
-	private double valorHora;
 	private boolean disponivel;
 	
-	public Espaco(int id, String nome, double valorHora, boolean disponivel) {
+	public Espaco(int id, String nome, boolean disponivel) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.valorHora = valorHora;
 		this.disponivel = disponivel;
 	}
+	
+	public abstract double getValorHora();
 	
 	public String getNome() {
 		return this.nome;
@@ -31,9 +31,6 @@ public class Espaco implements Serializable {
 		return this.id;
 	}
 	
-	public double getValorHora() {
-		return this.valorHora;
-	}
 	
 	@Override
 	public boolean equals(Object o) {
