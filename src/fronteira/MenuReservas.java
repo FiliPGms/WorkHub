@@ -17,11 +17,17 @@ public class MenuReservas {
 	
 	private Cliente clienteEncontrado;
 	private Espaco espacoEncontrado;
+	
+	private AdministradorSistema admSistema;
+
+    public MenuReservas(AdministradorSistema admSistema) {
+        this.admSistema = admSistema;
+    }
 
 	public void exibirMenuReservas() throws FalhaPersistenciaException, ClienteNaoEncontradoException, EspacoIndisponivelException {
 		Scanner sc = new Scanner(System.in);
 		
-		AdministradorSistema admSistema = new AdministradorSistema();
+		
 		
 		System.out.println("--- RESERVA ---");
         System.out.println("1. Criar Reserva");
@@ -33,7 +39,7 @@ public class MenuReservas {
         
         int opcao = sc.nextInt();
         
-        while(opcao >= 0) {
+        do {
         	switch(opcao) {
         	case 0:
         		System.out.println("Saindo do menu...");
@@ -62,10 +68,16 @@ public class MenuReservas {
             	    System.out.print("Hora de Fim (hh:mm): ");
             	    LocalTime fim = LocalTime.parse(sc.next());
             	    
+            	    if (fim.isBefore(inicio)) {
+            	        System.out.println("Hora final deve ser após a hora inicial.");
+            	        break;
+            	    }
+            	    
             	    Reserva r = new Reserva(id, clienteEncontrado, espacoEncontrado, data, inicio, fim, idEspaco);
             	    
-            	    System.out.print("Valor Total: ");
-            	    r.calcularValorTotal();
+            	    
+            	    double total = r.calcularValorTotal();
+            	    System.out.println("Valor total da reserva: $" + total);
             	    
             	    
             	    admSistema.criarReserva(r);
@@ -76,9 +88,9 @@ public class MenuReservas {
         		System.out.print("Informe o id da Reserva: ");
         		int idReserva = sc.nextInt();
         		try {
-					admSistema.buscarEspaco(idReserva);
-				} catch (EspacoIndisponivelException e) {
-					e.printStackTrace();
+					admSistema.buscarReserva(idReserva);
+				} catch (ReservaNaoEncontradaException e) {
+					System.out.println(e.getMessage());
 				}
         		break;
         		
@@ -88,20 +100,22 @@ public class MenuReservas {
         		try {
 					admSistema.cancelarReserva(reservaCancelada);
 				} catch (ReservaNaoEncontradaException e) {
+					System.out.println(e.getMessage());
 					e.printStackTrace();
 				} catch (FalhaPersistenciaException e) {
 					e.printStackTrace();
 				}
+      
         	
         	case 4: 
         		MenuPrincipal principal = new MenuPrincipal();
         		principal.iniciaOperacao();
-        		break;
+        
         		
         	default:
         		System.err.println("Opção Inválida.");
         	}
-        }
-        sc.close();
+        }while(opcao!=0);
+     
 	}
 }

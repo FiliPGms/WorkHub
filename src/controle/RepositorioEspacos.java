@@ -24,7 +24,7 @@ public class RepositorioEspacos {
 	@SuppressWarnings("unchecked")
 	public void carregar() throws FalhaPersistenciaException{
 		File f = new File(F);
-		if(!f.exists()) {
+		if(!f.exists()|| f.length() == 0) {
 			espacos = new HashMap<>();
 			return;
 		}

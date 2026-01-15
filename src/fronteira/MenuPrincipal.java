@@ -2,21 +2,29 @@ package fronteira;
 
 import java.util.Scanner;
 
+import controle.AdministradorSistema;
 import excecoes.ClienteNaoEncontradoException;
 import excecoes.EspacoIndisponivelException;
 import excecoes.FalhaPersistenciaException;
 
 public class MenuPrincipal {
 	
+	private AdministradorSistema admSistema;
+	
+	public MenuPrincipal() throws FalhaPersistenciaException{
+		this.admSistema = new AdministradorSistema();
+	}
+	
 	public void iniciaOperacao() throws FalhaPersistenciaException, ClienteNaoEncontradoException, EspacoIndisponivelException {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		
 		//Instanciando menus
-		MenuClientes menuClientes = new MenuClientes();
-		MenuEspacos menuEspacos = new MenuEspacos();
-		MenuRelatorios menuRelatorios = new MenuRelatorios();
-		MenuReservas menuReservas = new MenuReservas();
+		MenuClientes menuClientes = new MenuClientes(admSistema);
+		MenuEspacos menuEspacos = new MenuEspacos(admSistema);
+		MenuRelatorios menuRelatorios = new MenuRelatorios(admSistema);
+		MenuReservas menuReservas = new MenuReservas(admSistema);
 		
 		System.out.println("--- SISTEMA DE RESERVAS ---");
         System.out.println("1. Clientes");
@@ -28,7 +36,7 @@ public class MenuPrincipal {
         
         int opcao = sc.nextInt();
         
-        while(opcao >= 0) {
+        do {
         	switch(opcao) {
           	case 0:
          		System.out.println("Saindo do menu...");
@@ -58,14 +66,10 @@ public class MenuPrincipal {
          		System.err.println("Opção Inválida.");
          }
         	 
-        	 sc.close();
-        }
+       
+        }while(opcao!=0);
        
 	}
 
-	public static void main(String[] args) throws FalhaPersistenciaException, ClienteNaoEncontradoException, EspacoIndisponivelException {
-		MenuPrincipal menu = new MenuPrincipal();
-		menu.iniciaOperacao();
-	}
 }
 

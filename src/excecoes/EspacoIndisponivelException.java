@@ -3,6 +3,6 @@ package excecoes;
 public class EspacoIndisponivelException extends Exception {
 	
 	public EspacoIndisponivelException() {
-		System.err.println("Espaco Indisponivel");
+		System.err.println("Espaco Indisponivel ou nao encontrado");
 	}
 }

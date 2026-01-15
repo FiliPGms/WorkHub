@@ -8,6 +8,10 @@ import excecoes.ClienteNaoEncontradoException;
 public class MenuRelatorios {
 
 	private AdministradorSistema admSistema;
+
+    public MenuRelatorios(AdministradorSistema admSistema) {
+        this.admSistema = admSistema;
+    }
 	
 	public void exibirMenuRelatorios() {
 		Scanner sc = new Scanner(System.in);
@@ -24,7 +28,7 @@ public class MenuRelatorios {
         
         int opcao = sc.nextInt();
         
-        while (opcao >= 0) {
+        do {
         	switch(opcao) {
     		case 0:
     			System.out.println("Saindo do menu...");
@@ -60,7 +64,6 @@ public class MenuRelatorios {
     		default:
     			System.err.println("Opção Inválida");
         	}
-        }
-        sc.close();
+        }while(opcao!=0);
 	}
 }

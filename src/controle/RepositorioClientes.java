@@ -20,7 +20,7 @@ public class RepositorioClientes {
 	@SuppressWarnings("unchecked")
 	public void carregar() throws FalhaPersistenciaException{
 		File f = new File(F);
-		if(!f.exists()) {
+		if(!f.exists() || f.length() == 0) {
 			clientes = new HashMap<>();
 			return;
 		}
