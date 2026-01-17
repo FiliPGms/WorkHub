@@ -1,75 +1,77 @@
 package fronteira;
 
 import java.util.Scanner;
-
 import controle.AdministradorSistema;
-import excecoes.ClienteNaoEncontradoException;
-import excecoes.EspacoIndisponivelException;
+import excecoes.ExibidorErros;
 import excecoes.FalhaPersistenciaException;
 
 public class MenuPrincipal {
 	
 	private AdministradorSistema admSistema;
+	private Scanner sc;
 	
-	public MenuPrincipal() throws FalhaPersistenciaException{
+	public MenuPrincipal() throws FalhaPersistenciaException {
 		this.admSistema = new AdministradorSistema();
+		this.sc = new Scanner(System.in);
 	}
 	
-	public void iniciaOperacao() throws FalhaPersistenciaException, ClienteNaoEncontradoException, EspacoIndisponivelException {
+	public void iniciaOperacao() {
 		
-		Scanner sc = new Scanner(System.in);
+		// Instanciando menus uma única vez
+		MenuClientes menuClientes = new MenuClientes(admSistema, sc);
+		MenuEspacos menuEspacos = new MenuEspacos(admSistema, sc);
+		MenuRelatorios menuRelatorios = new MenuRelatorios(admSistema, sc);
+		MenuReservas menuReservas = new MenuReservas(admSistema, sc);
 		
+		int opcao = -1;
 		
-		//Instanciando menus
-		MenuClientes menuClientes = new MenuClientes(admSistema);
-		MenuEspacos menuEspacos = new MenuEspacos(admSistema);
-		MenuRelatorios menuRelatorios = new MenuRelatorios(admSistema);
-		MenuReservas menuReservas = new MenuReservas(admSistema);
+		do {
+			try {
+				System.out.println("\n╔════════════════════════════════════╗");
+				System.out.println("║   SISTEMA DE RESERVAS - WORKHUB   ║");
+				System.out.println("╚════════════════════════════════════╝");
+				System.out.println("1. Clientes");
+				System.out.println("2. Espaços");
+				System.out.println("3. Reservas");
+				System.out.println("4. Relatórios");
+				System.out.println("0. Sair");
+				System.out.print("Escolha uma opção: ");
+				
+				opcao = sc.nextInt();
+				sc.nextLine(); // Limpa o buffer
+				
+				switch(opcao) {
+					case 0:
+						ExibidorErros.exibirSucesso("Encerrando o sistema...");
+						System.out.println("Obrigado por usar o WorkHub!");
+						break;
+					
+					case 1:
+						menuClientes.exibirMenuClientes();
+						break;
+					
+					case 2:
+						menuEspacos.exibirMenuEspacos();
+						break;
+					
+					case 3:
+						menuReservas.exibirMenuReservas();
+						break;
+					
+					case 4:
+						menuRelatorios.exibirMenuRelatorios();
+						break;
+					
+					default:
+						ExibidorErros.exibir(new Exception("Opção inválida! Tente novamente."));
+				}
+			} catch (Exception e) {
+				ExibidorErros.exibir(e, "processar a operação");
+				sc.nextLine(); // Limpa o buffer em caso de erro
+			}
+			
+		} while(opcao != 0);
 		
-		System.out.println("--- SISTEMA DE RESERVAS ---");
-        System.out.println("1. Clientes");
-        System.out.println("2. Espaços");
-        System.out.println("3. Reservas");
-        System.out.println("4. Relatórios");
-        System.out.println("0. Sair");
-        System.out.print("Escolha uma opção: ");
-        
-        int opcao = sc.nextInt();
-        
-        do {
-        	switch(opcao) {
-          	case 0:
-         		System.out.println("Saindo do menu...");
-         		break;
-         	case 1:
-         		System.out.println("Redirecionando para o menu de Clientes...");
-         		menuClientes.exibirMenuClientes();
-         		break;
-         	
-         	case 2:
-         		System.out.println("Redirecionando para o menu de Espaços...");
-         		menuEspacos.exibirMenuEspacos();
-         		break;
-         	
-         	case 3:
-         		System.out.println("Redirecionando para o menu de Reservas...");
-         		menuReservas.exibirMenuReservas();
-         		break;
-         	
-         	case 4: 
-         		System.out.println("Redirecionando para o menu de Relatórios...");
-         		menuRelatorios.exibirMenuRelatorios();
-         		break;
-         	
-         	
-         	default:
-         		System.err.println("Opção Inválida.");
-         }
-        	 
-       
-        }while(opcao!=0);
-       
+		sc.close();
 	}
-
 }
-

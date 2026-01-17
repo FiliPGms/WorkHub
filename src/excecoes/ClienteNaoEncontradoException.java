@@ -3,6 +3,10 @@ package excecoes;
 public class ClienteNaoEncontradoException extends Exception {
 	
 	public ClienteNaoEncontradoException() {
-		System.err.println("Cliente nao foi encontrado");
-	}
+        super("Cliente não encontrado.");
+    }
+    
+    public ClienteNaoEncontradoException(String cpf) {
+        super("Cliente com CPF " + cpf + " não foi encontrado.");
+    }
 }

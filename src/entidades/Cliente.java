@@ -38,7 +38,7 @@ public class Cliente implements Serializable{
 		return this.telefone;
 	}
 	
-	public LocalDate getData() {
+	public LocalDate getDataCadastro() {
 		return this.dataDeCadastro;
 	}
 	
