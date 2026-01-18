@@ -75,9 +75,7 @@ public class MenuServicos {
 		} while(opcao != 0 && opcao != 4);
 	}
 	
-	/**
-	 * Adiciona serviços adicionais a uma reserva existente
-	 */
+
 	private void adicionarServico() {
 		try {
 			System.out.println("\n--- ADICIONAR SERVIÇO ---");
@@ -134,7 +132,7 @@ public class MenuServicos {
 						continue;
 				}
 				
-				// Adiciona o serviço
+				
 				admSistema.adicionarServico(idReserva, servico);
 				
 				ExibidorErros.exibirSucesso("Serviço adicionado com sucesso!");
@@ -143,9 +141,9 @@ public class MenuServicos {
 				
 				// Recalcula e exibe o valor total atualizado
 				double novoTotal = reserva.calcularValorTotal();
-				System.out.println("\n💰 Valor total da reserva atualizado: R$ " + String.format("%.2f", novoTotal));
+				System.out.println("\n Valor total da reserva atualizado: R$ " + String.format("%.2f", novoTotal));
 				
-				// Pergunta se quer adicionar mais serviços
+				
 				System.out.print("\nDeseja adicionar outro serviço? (S/N): ");
 				continuar = sc.nextLine().trim();
 			}
@@ -167,9 +165,7 @@ public class MenuServicos {
 		}
 	}
 	
-	/**
-	 * Remove serviços de uma reserva
-	 */
+	
 	private void removerServico() {
 		try {
 			System.out.println("\n--- REMOVER SERVIÇO ---");
@@ -196,7 +192,7 @@ public class MenuServicos {
 			
 			System.out.print("\nEscolha o número do serviço a remover (0 para cancelar): ");
 			int escolha = sc.nextInt();
-			sc.nextLine(); // Limpa o buffer
+			sc.nextLine();
 			
 			if(escolha == 0) {
 				ExibidorErros.exibirAviso("Operação cancelada.");
@@ -208,7 +204,7 @@ public class MenuServicos {
 				return;
 			}
 			
-			// Remove o serviço
+			
 			ServicoAdicional servicoRemover = reserva.getServicosAdicionais().get(escolha - 1);
 			admSistema.removerServico(idReserva, servicoRemover);
 			
@@ -217,7 +213,7 @@ public class MenuServicos {
 			
 			// Recalcula e exibe o valor total atualizado
 			double novoTotal = reserva.calcularValorTotal();
-			System.out.println("\n💰 Valor total da reserva atualizado: R$ " + String.format("%.2f", novoTotal));
+			System.out.println("\n Valor total da reserva atualizado: R$ " + String.format("%.2f", novoTotal));
 			
 		} catch (ReservaNaoEncontradaException e) {
 			ExibidorErros.exibir(e);
@@ -232,16 +228,16 @@ public class MenuServicos {
 	}
 	
 	/**
-	 * Exibe todos os serviços de uma reserva
+	 * vai exibir os serv de uma reserva
 	 */
 	private void verServicos() {
 		try {
 			System.out.println("\n--- VER SERVIÇOS DA RESERVA ---");
 			System.out.print("Informe o ID da reserva: ");
 			int idReserva = sc.nextInt();
-			sc.nextLine(); // Limpa o buffer
+			sc.nextLine(); 
 			
-			// Busca a reserva
+			// primeiro busca a rsrv
 			Reserva reserva = admSistema.buscarReserva(idReserva);
 			
 			System.out.println("\n╔═══════════════════════════════════════╗");
@@ -260,7 +256,7 @@ public class MenuServicos {
 			
 			// Serviços adicionais
 			if(reserva.getServicosAdicionais().isEmpty()) {
-				System.out.println("\n⚠ Nenhum serviço adicional contratado.");
+				System.out.println("\n Nenhum serviço adicional contratado.");
 			} else {
 				System.out.println("\nServiços Adicionais:");
 				double totalServicos = 0;

@@ -40,7 +40,7 @@ public class MenuRelatorios {
 				System.out.print("Escolha uma opção: ");
 				
 				opcao = sc.nextInt();
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 				
 				switch(opcao) {
 					case 0:
@@ -82,7 +82,7 @@ public class MenuRelatorios {
 				
 			} catch (Exception e) {
 				ExibidorErros.exibir(e);
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 			}
 			
 		} while(opcao != 0 && opcao != 7);

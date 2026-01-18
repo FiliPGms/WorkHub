@@ -34,7 +34,7 @@ public class MenuClientes {
 				System.out.print("Escolha uma opção: ");
 				
 				opcao = sc.nextInt();
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 				
 				switch(opcao) {
 					case 0:
@@ -60,7 +60,7 @@ public class MenuClientes {
 				
 			} catch (Exception e) {
 				ExibidorErros.exibir(e);
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 			}
 			
 		} while(opcao != 0 && opcao != 3);
@@ -125,7 +125,7 @@ public class MenuClientes {
 				ExibidorErros.exibir(e, "cadastrar cliente");
 			}
 			
-			// Pergunta se quer continuar cadastrando
+			
 			System.out.print("\nDeseja cadastrar outro cliente? (S/N): ");
 			continuar = sc.nextLine().trim();
 		}

@@ -82,11 +82,11 @@ public class MenuEspacos {
 				System.out.print("Opção: ");
 				
 				int tipo = sc.nextInt();
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); //sempre pra limpar o buffer 
 				
 				System.out.print("\nID do espaço (número): ");
 				int id = sc.nextInt();
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine();
 				
 				// Verifica se o ID já existe
 				try {
@@ -94,7 +94,7 @@ public class MenuEspacos {
 					ExibidorErros.exibir(new Exception("Já existe um espaço cadastrado com este ID!"));
 					continue;
 				} catch (EspacoIndisponivelException e) {
-					// ID não existe, pode continuar
+					// ID não existe, continua
 				}
 				
 				System.out.print("Nome do espaço: ");
@@ -105,9 +105,9 @@ public class MenuEspacos {
 					continue;
 				}
 				
-				System.out.print("Espaço disponível? (true/false): ");
-				boolean disponivel = sc.nextBoolean();
-				sc.nextLine(); // Limpa o buffer
+				
+				boolean disponivel = true;
+				 
 				
 				Espaco espaco = null;
 				String tipoEspaco = "";
@@ -147,10 +147,10 @@ public class MenuEspacos {
 				
 			} catch (Exception e) {
 				ExibidorErros.exibir(e, "cadastrar espaço");
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 			}
 			
-			// Pergunta se quer continuar cadastrando
+		
 			System.out.print("\nDeseja cadastrar outro espaço? (S/N): ");
 			continuar = sc.nextLine().trim();
 		}
@@ -163,7 +163,7 @@ public class MenuEspacos {
 			System.out.println("\n--- BUSCAR ESPAÇO ---");
 			System.out.print("Informe o ID do espaço: ");
 			int id = sc.nextInt();
-			sc.nextLine(); // Limpa o buffer
+			sc.nextLine();
 			
 			Espaco espaco = admSistema.buscarEspaco(id);
 			

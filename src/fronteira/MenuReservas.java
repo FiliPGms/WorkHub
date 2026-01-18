@@ -40,7 +40,7 @@ public class MenuReservas {
 				System.out.print("Escolha uma opção: ");
 				
 				opcao = sc.nextInt();
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 				
 				switch(opcao) {
 					case 0:
@@ -70,7 +70,7 @@ public class MenuReservas {
 				
 			} catch (Exception e) {
 				ExibidorErros.exibir(e);
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 			}
 			
 		} while(opcao != 0 && opcao != 4);
@@ -93,7 +93,7 @@ public class MenuReservas {
 					ExibidorErros.exibir(new Exception("Já existe uma reserva com este ID!"));
 					continue;
 				} catch (ReservaNaoEncontradaException e) {
-					// ID não existe, pode continuar
+					// ID não existe, continua
 				}
 				
 				System.out.print("CPF do cliente: ");
@@ -111,7 +111,7 @@ public class MenuReservas {
 				
 				System.out.print("ID do espaço: ");
 				int idEspaco = sc.nextInt();
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 				
 				Espaco espaco = null;
 				try {
@@ -195,10 +195,10 @@ public class MenuReservas {
 				
 			} catch (Exception e) {
 				ExibidorErros.exibir(e, "criar reserva");
-				sc.nextLine(); // Limpa o buffer
+				sc.nextLine(); 
 			}
 			
-			// Pergunta se quer continuar criando reservas
+			
 			System.out.print("\nDeseja criar outra reserva? (S/N): ");
 			continuar = sc.nextLine().trim();
 		}
@@ -211,7 +211,7 @@ public class MenuReservas {
 			System.out.println("\n--- BUSCAR RESERVA ---");
 			System.out.print("Informe o ID da reserva: ");
 			int id = sc.nextInt();
-			sc.nextLine(); // Limpa o buffer
+			sc.nextLine(); 
 			
 			Reserva reserva = admSistema.buscarReserva(id);
 			
@@ -247,7 +247,7 @@ public class MenuReservas {
 			System.out.println("\n--- CANCELAR RESERVA ---");
 			System.out.print("Informe o ID da reserva a ser cancelada: ");
 			int id = sc.nextInt();
-			sc.nextLine(); // Limpa o buffer
+			sc.nextLine(); 
 			
 			// Busca a reserva antes de cancelar para confirmar
 			Reserva reserva = admSistema.buscarReserva(id);

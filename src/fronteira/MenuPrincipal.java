@@ -17,7 +17,7 @@ public class MenuPrincipal {
 	
 	public void iniciaOperacao() {
 		
-		// Instanciando menus uma única vez
+		// instanciando meus menus 
 		MenuClientes menuClientes = new MenuClientes(admSistema, sc);
 		MenuEspacos menuEspacos = new MenuEspacos(admSistema, sc);
 		MenuRelatorios menuRelatorios = new MenuRelatorios(admSistema, sc);
