@@ -13,13 +13,22 @@ public class RecebimentoCorrespondencia implements ServicoAdicional,Serializable
 		this.descricao = descricao;
 	}
 	
+	public RecebimentoCorrespondencia() {
+        this.descricao = "Recebimento de Correspondências";
+    }
+	
 	@Override
 	public double getValorTotal() {
-		return this.VALOR;
+		return VALOR;
 	}
 	
 	@Override
 	public String getDescricao() {
 		return this.descricao;
 	}
+	
+	  @Override
+	    public String toString() {
+	        return descricao + " - R$ " + String.format("%.2f", VALOR);
+	    }
 }

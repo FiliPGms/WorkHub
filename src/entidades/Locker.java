@@ -11,17 +11,22 @@ public class Locker implements ServicoAdicional,Serializable {
 	private static final double VALOR = 10.0;
 	private String descricao;
 	
-	public Locker(String descricao) {
-		this.descricao = descricao;
+	public Locker() {
+		this.descricao = "Locker (Armario)";
 	}
 	
 	@Override
 	public double getValorTotal() {
-		return this.VALOR;
+		return VALOR;
 	}
 	
 	@Override
 	public String getDescricao() {
 		return this.descricao;
+	}
+	
+	 @Override
+	public String toString() {
+	    return descricao + " - R$ " + String.format("%.2f", VALOR);
 	}
 }

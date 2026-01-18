@@ -8,17 +8,22 @@ public class CafePremium implements ServicoAdicional,Serializable{
 	private String descricao;
 	private static final double VALOR = 5.0;
 	
-	public CafePremium(String descricao) {
-		this.descricao = descricao;
+	public CafePremium() {
+		this.descricao = "Cafe Premium";
 	}
 	
 	@Override
 	public double getValorTotal() {
-		return this.VALOR;
+		return VALOR;
 	}
 	
 	@Override
 	public String getDescricao() {
 		return descricao;
 	}
+	
+	@Override
+    public String toString() {
+        return descricao + " - R$ " + String.format("%.2f", VALOR);
+    }
 }

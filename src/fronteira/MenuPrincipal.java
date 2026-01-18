@@ -22,6 +22,7 @@ public class MenuPrincipal {
 		MenuEspacos menuEspacos = new MenuEspacos(admSistema, sc);
 		MenuRelatorios menuRelatorios = new MenuRelatorios(admSistema, sc);
 		MenuReservas menuReservas = new MenuReservas(admSistema, sc);
+		MenuServicos menuServicos = new MenuServicos(admSistema, sc);
 		
 		int opcao = -1;
 		
@@ -33,7 +34,8 @@ public class MenuPrincipal {
 				System.out.println("1. Clientes");
 				System.out.println("2. Espaços");
 				System.out.println("3. Reservas");
-				System.out.println("4. Relatórios");
+				System.out.println("4. Serviços Adicionais");
+				System.out.println("5. Relatórios");
 				System.out.println("0. Sair");
 				System.out.print("Escolha uma opção: ");
 				
@@ -59,8 +61,10 @@ public class MenuPrincipal {
 						break;
 					
 					case 4:
-						menuRelatorios.exibirMenuRelatorios();
+						menuServicos.exibirMenuServicos();
 						break;
+					case 5:
+						menuRelatorios.exibirMenuRelatorios();
 					
 					default:
 						ExibidorErros.exibir(new Exception("Opção inválida! Tente novamente."));
